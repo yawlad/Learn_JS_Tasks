@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .menu_header{
+        cursor: pointer;
+      }
+      .menu_list {
+        display: none;
+      }
+      .menu_header::before {
+        content: "▶ ";
+        color: green;
+      }
+      .menu[class$="active"] .menu_header::before {
+        content: "▼ ";
+        color: green;
+      }
+      .menu[class$="active"] .menu_list {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+   
+    <div class="menu">
+      <h3 class="menu_header">Сладости (нажми меня)!</h3>
+      <ul class="menu_list">
+        <li class="menu_item">Пирожное</li>
+        <li class="menu_item">Пончик</li>
+        <li class="menu_item">Мёд</li>
+      </ul>
+    </div>
+
+    <script>
+      const menu = document.querySelector(".menu")
+      menu.addEventListener("click", ()=>{
+        menu.classList.toggle("active"); 
+      })
+    </script>
+  </body>
+</html>

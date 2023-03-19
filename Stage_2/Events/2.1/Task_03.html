@@ -1,0 +1,12 @@
+
+
+
+<script>
+  button.addEventListener("click", () => alert("1"));
+
+  button.removeEventListener("click", () => alert("1"));
+
+  button.onclick = () => alert(2);
+
+  // 2 handlers work at once, because in removeEventListener we did not remove the current handler
+</script>

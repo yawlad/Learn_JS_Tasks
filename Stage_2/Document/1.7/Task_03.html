@@ -1,0 +1,21 @@
+<table id="table">
+  aaa
+  <tr>
+    <td>Тест</td>
+  </tr>
+</table>
+
+<script>
+  alert(table);
+  table.remove();
+
+  // Because our html code is incorrect
+  // After correcting the code by the browser, the code looks like this:
+
+  //     <body>
+  //     aaa
+  //     <table id="table"><tbody><tr>
+  //       <td>Тест</td>
+  //     </tr>
+  //   </tbody></table>
+</script>

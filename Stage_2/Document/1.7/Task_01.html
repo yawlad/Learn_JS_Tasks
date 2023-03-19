@@ -1,0 +1,14 @@
+<h1>
+  Options 1 and 3 will paste the string as text, and option 2 will paste it as
+  html
+</h1>
+<div class="elem_1"></div>
+<div class="elem_2"></div>
+<div class="elem_3"></div>
+
+<script>
+  text = "<strong>TEXT</strong>";
+  document.querySelector(".elem_1").append(document.createTextNode(text));
+  document.querySelector(".elem_2").innerHTML = text;
+  document.querySelector(".elem_3").textContent = text;
+</script>
