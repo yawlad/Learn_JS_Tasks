@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    Both of these properties are used to get the width of an element on the
+    page, but there are a few differences:
+    <ul>
+      <li>Return values:
+        <ul>
+          <li>getComputedStyle(elem).width - Returns the width of an element,
+            including borders, margins, and padding. The value is returned in
+            pixels or another CSS-defined unit (such as %, em, etc.).</li>
+          <li>elem.clientWidth - Returns the width of an element, excluding
+            borders, margins, and scrolling. The value is returned in pixels.</li>
+        </ul>
+      </li>
+      <li>Ability to set value:
+        <ul>
+          <li>getComputedStyle(elem).width - cannot be used to set an element's
+            width value. This is read-only.</li>
+          <li>elem.clientWidth - also cannot be used to set an element's width
+            value. This is read-only.</li>
+        </ul>
+      </li>
+      <li>Browser support:
+        <ul>
+          <li>getComputedStyle(elem).width - supported by all modern browsers.</li>
+          <li>elem.clientWidth - Also supported by all modern browsers, but in
+            IE8 and earlier, this method does not work correctly in
+            standards-compliant mode.</li>
+        </ul>
+      </li>
+      <li>Calculation of values:
+        <ul>
+          <li>getComputedStyle(elem).width - Used to get the actual width of an
+            element after all styles have been applied, including values
+            inherited from the parent element.</li>
+          <li>elem.clientWidth - used to get the width of an element, excluding
+            borders, margins, and scrolling. If the element has a scrollbar,
+            then the clientWidth value will be less than the element's width.</li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>

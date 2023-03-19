@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #hours {
+        color: crimson;
+      }
+      #minutes {
+        color: green;
+      }
+      #seconds {
+        color: orange;
+      }
+      .clock {
+        display: flex;
+        width: fit-content;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .clock__time {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="clock__time">
+        <span id="hours">10</span>:<span id="minutes">20</span>:<span
+          id="seconds"
+          >30</span
+        >
+      </div>
+      <div class="clock__buttons">
+        <input type="button" onclick="clockStart()" value="Старт" />
+        <input type="button" onclick="clockStop()" value="Стоп" />
+      </div>
+    </div>
+
+    <script>
+      function getTime() {
+        let clock = document.querySelector(".clock");
+        let date = new Date();
+
+        let hours = date.getHours();
+        if (hours < 10) hours = "0" + hours;
+        clock.querySelector("#hours").innerHTML = hours;
+
+        let minutes = date.getMinutes();
+        if (minutes < 10) minutes = "0" + minutes;
+        clock.querySelector("#minutes").innerHTML = minutes;
+
+        let seconds = date.getSeconds();
+        if (seconds < 10) seconds = "0" + seconds;
+        clock.querySelector("#seconds").innerHTML = seconds;
+      }
+
+      let timerId;
+      
+      function clockStart() {
+        timerId = setInterval(getTime, 1000);
+        getTime();
+      }
+
+      function clockStop() {
+        clearInterval(timerId);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .arrow {
+        padding: 0;
+        background: #ddd;
+        border-radius: 15px;
+        border: 1px solid gray;
+        font-size: 24px;
+        line-height: 24px;
+        color: #444;
+        display: block;
+      }
+
+      .arrow:focus {
+        outline: none;
+      }
+
+      .arrow:hover {
+        background: #ccc;
+        cursor: pointer;
+      }
+
+      ul {
+        height: 130px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 0;
+      }
+
+      ul img {
+        width: 130px;
+        height: 130px;
+        display: block; /* убираем пустое место вокруг картинок */
+      }
+
+      ul li {
+        display: inline-block; /* убираем пустое место между элементами списка */
+      }
+
+      .carousel {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: fit-content;
+        margin: auto;
+        overflow: hidden;
+        max-width: 390px;
+      }
+      .carousel_list {
+        display: flex;
+        transition: 0.3s;
+      }
+      .carousel_buttons {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="carousel">
+      <ul class="carousel_list">
+        <li class="carousel_item">
+          <img src="https://ru.js.cx/carousel/1.png" />
+        </li>
+        <li class="carousel_item">
+          <img src="https://ru.js.cx/carousel/2.png" />
+        </li>
+        <li class="carousel_item">
+          <img src="https://ru.js.cx/carousel/3.png" />
+        </li>
+        <li class="carousel_item">
+          <img src="https://ru.js.cx/carousel/4.png" />
+        </li>
+        <li class="carousel_item">
+          <img src="https://ru.js.cx/carousel/5.png" />
+        </li>
+        <li class="carousel_item">
+          <img src="https://ru.js.cx/carousel/6.png" />
+        </li>
+        <li class="carousel_item">
+          <img src="https://ru.js.cx/carousel/7.png" />
+        </li>
+        <li class="carousel_item">
+          <img src="https://ru.js.cx/carousel/8.png" />
+        </li>
+        <li class="carousel_item">
+          <img src="https://ru.js.cx/carousel/9.png" />
+        </li>
+        <li class="carousel_item">
+          <img src="https://ru.js.cx/carousel/10.png" />
+        </li>
+      </ul>
+      <div class="carousel_buttons">
+        <button class="arrow button_prev">⇦</button>
+        <button class="arrow button_next">⇨</button>
+      </div>
+    </div>
+
+    <script>
+      const button_prev = document.querySelector(".button_prev");
+      const button_next = document.querySelector(".button_next");
+      const carousel = document.querySelector(".carousel");
+      const carousel_list = document.querySelector(".carousel_list");
+      const carousel_item_array =
+        carousel_list.querySelectorAll(".carousel_item");
+      function clapDeltaX(deltaX) {
+        return deltaX < 0
+          ? 0
+          : deltaX > carousel_item_array.length * 130 - carousel.clientWidth
+          ? carousel_item_array.length * 130 - carousel.clientWidth
+          : deltaX;
+      }
+      let currentDeltaX = 0;
+      button_prev.addEventListener("click", () => {
+        currentDeltaX = clapDeltaX(currentDeltaX - 130);
+        carousel_list.style.transform = `translateX(-${currentDeltaX}px)`;
+      });
+      button_next.addEventListener("click", () => {
+        currentDeltaX = clapDeltaX(currentDeltaX + 130);
+        carousel_list.style.transform = `translateX(-${currentDeltaX}px)`;
+      });
+    </script>
+  </body>
+</html>

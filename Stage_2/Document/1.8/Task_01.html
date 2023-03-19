@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .notification {
+      font-size: 32px;
+      background-color: crimson;
+      padding: 10px 25px;
+      border-radius: 5px;
+      color: whitesmoke;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    function showNotification(options){
+      const window = document.createElement("div");
+      window.classList.add("notification");
+      window.style.position = "absolute";
+      window.innerHTML = options.html;
+      window.style.top = `${options.top}px`;
+      window.style.right = `${options.right}px`;
+      window.classList.add(`${options.className}px`);
+      document.body.append(window);
+      setTimeout(()=>{
+        window.style.display = "none";
+      }, 1500)
+    }
+    showNotification({
+      top: 10,
+      right: 10, 
+      html: "Hello!", 
+      className: "welcome" 
+    });
+  </script>
+</body>
+</html>
